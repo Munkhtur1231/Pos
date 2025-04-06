@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.Sqlite;
 using Pos.data;
+using PosLibrary;
 
 namespace Pos
 {
@@ -79,8 +80,8 @@ namespace Pos
                     Image = null
                 });
                 productGridView.DataSource = owner.productContext.Products.ToList();
-                owner.DrawProductType();
                 owner.DrawProduct(owner.productContext.Products.ToList());
+                owner.DrawProductType();
                 MessageBox.Show("Барааг амжилттай нэмлээ.");
             }
             catch (Exception ex)

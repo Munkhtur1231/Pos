@@ -1,4 +1,6 @@
-﻿namespace Pos
+﻿using PosLibrary;
+
+namespace Pos
 {
     partial class ProductList
     {

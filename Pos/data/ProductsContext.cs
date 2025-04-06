@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
 namespace Pos.data;
-
+using PosLibrary;
 public partial class ProductsContext : DbContext
 {
     public ProductsContext()
