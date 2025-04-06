@@ -37,13 +37,12 @@
             label_Date = new Label();
             label_SupermarketName = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
-            panel2 = new Panel();
-            button_Snacks = new Button();
             button_ClearTypeSearch = new Button();
-            button_Drinks = new Button();
-            button_Meat = new Button();
-            button_Bakery = new Button();
-            button_Fruits = new Button();
+            flowLayoutPanel3 = new FlowLayoutPanel();
+            panel_UserMenu = new Panel();
+            button_Help = new Button();
+            button_ShowProductList = new Button();
+            button_User = new Button();
             textBox_Search = new TextBox();
             flowLayoutPanel2 = new FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
@@ -52,7 +51,7 @@
             splitContainer1.SuspendLayout();
             panel3.SuspendLayout();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
+            panel_UserMenu.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -70,7 +69,9 @@
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(panel2);
+            splitContainer1.Panel2.Controls.Add(button_ClearTypeSearch);
+            splitContainer1.Panel2.Controls.Add(flowLayoutPanel3);
+            splitContainer1.Panel2.Controls.Add(panel_UserMenu);
             splitContainer1.Panel2.Controls.Add(textBox_Search);
             splitContainer1.Panel2.Controls.Add(flowLayoutPanel2);
             splitContainer1.Size = new Size(1126, 678);
@@ -157,42 +158,15 @@
             flowLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanel1.Location = new Point(3, 76);
+            flowLayoutPanel1.Location = new Point(3, 87);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(448, 459);
+            flowLayoutPanel1.Size = new Size(448, 448);
             flowLayoutPanel1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            panel2.Controls.Add(button_Snacks);
-            panel2.Controls.Add(button_ClearTypeSearch);
-            panel2.Controls.Add(button_Drinks);
-            panel2.Controls.Add(button_Meat);
-            panel2.Controls.Add(button_Bakery);
-            panel2.Controls.Add(button_Fruits);
-            panel2.Location = new Point(3, 541);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(647, 137);
-            panel2.TabIndex = 7;
-            // 
-            // button_Snacks
-            // 
-            button_Snacks.BackColor = SystemColors.MenuHighlight;
-            button_Snacks.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_Snacks.ForeColor = Color.White;
-            button_Snacks.Location = new Point(14, 3);
-            button_Snacks.Name = "button_Snacks";
-            button_Snacks.Size = new Size(102, 72);
-            button_Snacks.TabIndex = 2;
-            button_Snacks.Text = "Snacks";
-            button_Snacks.UseVisualStyleBackColor = false;
-            button_Snacks.Click += button_Types_Click;
             // 
             // button_ClearTypeSearch
             // 
             button_ClearTypeSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_ClearTypeSearch.Location = new Point(538, 81);
+            button_ClearTypeSearch.Location = new Point(552, 629);
             button_ClearTypeSearch.Name = "button_ClearTypeSearch";
             button_ClearTypeSearch.Size = new Size(102, 37);
             button_ClearTypeSearch.TabIndex = 6;
@@ -200,67 +174,69 @@
             button_ClearTypeSearch.UseVisualStyleBackColor = true;
             button_ClearTypeSearch.Click += button_ClearTypeSearch_Click;
             // 
-            // button_Drinks
+            // flowLayoutPanel3
             // 
-            button_Drinks.BackColor = SystemColors.MenuHighlight;
-            button_Drinks.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_Drinks.ForeColor = Color.White;
-            button_Drinks.Location = new Point(141, 3);
-            button_Drinks.Name = "button_Drinks";
-            button_Drinks.Size = new Size(102, 72);
-            button_Drinks.TabIndex = 3;
-            button_Drinks.Text = "Drinks";
-            button_Drinks.UseVisualStyleBackColor = false;
-            button_Drinks.Click += button_Types_Click;
+            flowLayoutPanel3.Location = new Point(7, 544);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            flowLayoutPanel3.Size = new Size(647, 79);
+            flowLayoutPanel3.TabIndex = 9;
             // 
-            // button_Meat
+            // panel_UserMenu
             // 
-            button_Meat.BackColor = SystemColors.MenuHighlight;
-            button_Meat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_Meat.ForeColor = Color.White;
-            button_Meat.Location = new Point(538, 3);
-            button_Meat.Name = "button_Meat";
-            button_Meat.Size = new Size(102, 72);
-            button_Meat.TabIndex = 1;
-            button_Meat.Text = "Meat";
-            button_Meat.UseVisualStyleBackColor = false;
-            button_Meat.Click += button_Types_Click;
+            panel_UserMenu.AllowDrop = true;
+            panel_UserMenu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel_UserMenu.Controls.Add(button_Help);
+            panel_UserMenu.Controls.Add(button_ShowProductList);
+            panel_UserMenu.Controls.Add(button_User);
+            panel_UserMenu.Location = new Point(563, 3);
+            panel_UserMenu.MaximumSize = new Size(93, 110);
+            panel_UserMenu.MinimumSize = new Size(93, 36);
+            panel_UserMenu.Name = "panel_UserMenu";
+            panel_UserMenu.Size = new Size(93, 36);
+            panel_UserMenu.TabIndex = 8;
             // 
-            // button_Bakery
+            // button_Help
             // 
-            button_Bakery.BackColor = SystemColors.MenuHighlight;
-            button_Bakery.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_Bakery.ForeColor = Color.White;
-            button_Bakery.Location = new Point(273, 3);
-            button_Bakery.Name = "button_Bakery";
-            button_Bakery.Size = new Size(102, 72);
-            button_Bakery.TabIndex = 5;
-            button_Bakery.Text = "Bakery";
-            button_Bakery.UseVisualStyleBackColor = false;
-            button_Bakery.Click += button_Types_Click;
+            button_Help.BackColor = Color.WhiteSmoke;
+            button_Help.Location = new Point(0, 73);
+            button_Help.Name = "button_Help";
+            button_Help.Size = new Size(93, 37);
+            button_Help.TabIndex = 2;
+            button_Help.Text = "Help";
+            button_Help.UseVisualStyleBackColor = false;
+            button_Help.Click += button_Help_Click;
             // 
-            // button_Fruits
+            // button_ShowProductList
             // 
-            button_Fruits.BackColor = SystemColors.MenuHighlight;
-            button_Fruits.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button_Fruits.ForeColor = Color.White;
-            button_Fruits.Location = new Point(406, 3);
-            button_Fruits.Name = "button_Fruits";
-            button_Fruits.Size = new Size(102, 72);
-            button_Fruits.TabIndex = 4;
-            button_Fruits.Text = "Fruits";
-            button_Fruits.UseVisualStyleBackColor = false;
-            button_Fruits.Click += button_Types_Click;
+            button_ShowProductList.BackColor = Color.WhiteSmoke;
+            button_ShowProductList.Location = new Point(0, 35);
+            button_ShowProductList.Name = "button_ShowProductList";
+            button_ShowProductList.Size = new Size(93, 43);
+            button_ShowProductList.TabIndex = 1;
+            button_ShowProductList.Text = "Products";
+            button_ShowProductList.UseVisualStyleBackColor = false;
+            button_ShowProductList.Click += button_ShowProductList_Click;
+            // 
+            // button_User
+            // 
+            button_User.BackColor = Color.WhiteSmoke;
+            button_User.Location = new Point(0, 0);
+            button_User.Name = "button_User";
+            button_User.Size = new Size(93, 35);
+            button_User.TabIndex = 0;
+            button_User.Text = "User";
+            button_User.UseVisualStyleBackColor = false;
+            button_User.Click += button_User_Click;
             // 
             // textBox_Search
             // 
             textBox_Search.BorderStyle = BorderStyle.FixedSingle;
-            textBox_Search.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox_Search.Location = new Point(3, 17);
+            textBox_Search.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox_Search.Location = new Point(3, 46);
             textBox_Search.Margin = new Padding(3, 12, 3, 3);
             textBox_Search.Name = "textBox_Search";
             textBox_Search.PlaceholderText = "Search Products";
-            textBox_Search.Size = new Size(662, 43);
+            textBox_Search.Size = new Size(662, 35);
             textBox_Search.TabIndex = 1;
             textBox_Search.TextChanged += textBox_Search_TextChanged;
             // 
@@ -269,9 +245,9 @@
             flowLayoutPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             flowLayoutPanel2.AutoScroll = true;
             flowLayoutPanel2.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanel2.Location = new Point(3, 76);
+            flowLayoutPanel2.Location = new Point(3, 87);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(662, 459);
+            flowLayoutPanel2.Size = new Size(662, 448);
             flowLayoutPanel2.TabIndex = 0;
             // 
             // Pos
@@ -281,6 +257,7 @@
             ClientSize = new Size(1126, 678);
             Controls.Add(splitContainer1);
             Name = "Pos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Pos_Load;
             splitContainer1.Panel1.ResumeLayout(false);
@@ -292,7 +269,7 @@
             panel3.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
+            panel_UserMenu.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -304,17 +281,16 @@
         public TextBox textBox_TotalPrice;
         private Label label_TotalPrice;
         private TextBox textBox_Search;
-        private Button button_Bakery;
-        private Button button_Fruits;
-        private Button button_Drinks;
-        private Button button_Snacks;
-        private Button button_Meat;
         private Button button_ClearTypeSearch;
         public FlowLayoutPanel flowLayoutPanel1;
         private Button button_Pay;
         private Label label_SupermarketName;
         private Label label_Date;
-        private Panel panel2;
         private Panel panel3;
+        private Panel panel_UserMenu;
+        private Button button_Help;
+        private Button button_ShowProductList;
+        public Button button_User;
+        private FlowLayoutPanel flowLayoutPanel3;
     }
 }

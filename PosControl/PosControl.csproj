@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+	  <GenerateLibraryOutput>True</GenerateLibraryOutput>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Pos">
+      <HintPath>..\Pos\bin\Debug\net8.0-windows\Pos.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

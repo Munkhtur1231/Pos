@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pos
 {
-    internal class MenuProducts
+    public class MenuProducts
     {
         public List<Product> products;
 
@@ -35,6 +35,14 @@ namespace Pos
                 if (product.Type.ToLower().Equals(type.ToLower())) filteredProducts.Add(product);
             }
             return filteredProducts;
+        }
+        public List<string> getTypes()
+        {
+            return products
+                .Where(p => p.Type != null)
+                .Select(p => p.Type)
+                .Distinct()
+                .ToList();
         }
     }
 }

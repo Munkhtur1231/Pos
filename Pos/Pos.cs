@@ -1,19 +1,41 @@
-﻿using Pos.Properties;
+﻿using Microsoft.Data.Sqlite;
+using Microsoft.EntityFrameworkCore;
+using Pos.data;
+using PosLibrary;
 
 namespace Pos
 {
     public partial class Pos : Form
     {
-        MenuProducts menuProducts;
+        public MenuProducts menuProducts;
+        public List<string> productTypes;
         public OrderedProductList orderedProductList;
+        public ProductList productList;  // List harah form
+        public User user;
+        bool isCollapsed = true; // User menu
+
+        SqliteConnection connection;
+        public ProductsContext productContext;
+
+        SqliteCommand selectAllProduct;
+
+
         public Pos()
         {
             InitializeComponent();
             menuProducts = new MenuProducts();
             orderedProductList = new OrderedProductList();
+            
+
+            connection = new("Data Source=products.db");
+
+            selectAllProduct = new("SELECT * FROM Product", connection);
+
+            productContext = new();
+
         }
 
-        private void DrawProduct(List<Product> products)
+        public void DrawProduct(List<Product> products)
         {
             flowLayoutPanel2.Controls.Clear();
             foreach (var product in products)
@@ -24,7 +46,7 @@ namespace Pos
                 btn.Size = new Size(140, 120);
                 btn.TabIndex = 0;
                 btn.Text = product.Name + " " + product.Price + "₮";
-                btn.Image = product.Image;
+                if (product.Image != null) btn.Image = ConvertByteArrayToImage(product.Image);
                 btn.TextImageRelation = TextImageRelation.ImageAboveText;
                 btn.TextAlign = ContentAlignment.BottomCenter;
                 btn.UseVisualStyleBackColor = true;
@@ -35,32 +57,74 @@ namespace Pos
             }
         }
 
+        public void DrawProductType()
+        {
+            productTypes = menuProducts.getTypes();
+
+            flowLayoutPanel3.Controls.Clear();
+            foreach (var type in productTypes)
+            {
+                Button btn = new Button();
+
+                btn.BackColor = SystemColors.MenuHighlight;
+                btn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+                btn.ForeColor = Color.White;
+                btn.Location = new Point(3, 3);
+                btn.Name = "button_" + type;
+                btn.Size = new Size(102, 72);
+                btn.TabIndex = 2;
+                btn.Text = type;
+                btn.UseVisualStyleBackColor = false;
+                btn.Click += button_Types_Click;
+
+                flowLayoutPanel3.Controls.Add(btn);
+            }
+        }
+
+        public Image ConvertByteArrayToImage(byte[] byteArray)
+        {
+            using (MemoryStream ms = new MemoryStream(byteArray))
+            {
+                return Image.FromStream(ms);
+            }
+        }
+
         private void Pos_Load(object sender, EventArgs e)
         {
-            menuProducts.addProduct(new Product(1, "KitKat", 3500, "Snacks", Properties.Resources.Product_KitKat));
-            menuProducts.addProduct(new Product(2, "Doritos", 7300, "Snacks", Properties.Resources.Product_Doritos));
-            menuProducts.addProduct(new Product(3, "Snickers", 4000, "Snacks", Properties.Resources.Product_Snickers));
-            menuProducts.addProduct(new Product(4, "Reese", 2100, "Snacks", Properties.Resources.Product_Reese));
 
-            menuProducts.addProduct(new Product(5, "Apple", 4200, "Fruits", Properties.Resources.Product_Apple));
-            menuProducts.addProduct(new Product(6, "Orange", 3700, "Fruits", Properties.Resources.Product_Orange));
-            menuProducts.addProduct(new Product(7, "Pineapple", 2500, "Fruits", Properties.Resources.Product_Pineapple));
+            Login loginForm = new Login(this);
+            loginForm.ShowDialog();
 
-            menuProducts.addProduct(new Product(8, "Milk", 1900, "Drinks", Properties.Resources.Product_Milk));
-            menuProducts.addProduct(new Product(9, "Coca Cola", 4000, "Drinks", Properties.Resources.Product_CocaCola));
-            menuProducts.addProduct(new Product(10, "Green tea", 2500, "Drinks", Properties.Resources.Product_GreenTea));
-            menuProducts.addProduct(new Product(11, "Water", 1100, "Drinks", Properties.Resources.Product_Water));
+            updateMenuProducts();
 
-            menuProducts.addProduct(new Product(12, "Beef", 21000, "Meat", Properties.Resources.Product_Beef_Topside));
-            menuProducts.addProduct(new Product(13, "Chicken wings", 13000, "Meat", Properties.Resources.Product_ChickenWings));
-            menuProducts.addProduct(new Product(14, "Sausage", 7000, "Meat", Properties.Resources.Product_Sausage));
+            
 
-            menuProducts.addProduct(new Product(15, "Bread", 2500, "Bakery", Properties.Resources.Product_Bread));
-            menuProducts.addProduct(new Product(16, "Donut", 3200, "Bakery", Properties.Resources.Product_Donut));
-            menuProducts.addProduct(new Product(17, "Pie", 8900, "Bakery", Properties.Resources.Product_Pie));
 
             DrawProduct(menuProducts.products);
+            DrawProductType();
+
             label_Date.Text = DateTime.Now.ToString();
+
+        }
+
+        public void updateMenuProducts()
+        {
+            connection.Open();
+
+            SqliteDataReader reader = selectAllProduct.ExecuteReader();
+
+            while (reader.Read())
+            {
+                menuProducts.addProduct(new Product
+                {
+                    Id = reader.GetInt32(0),
+                    Name = reader.GetString(1),
+                    Price = reader.GetDouble(2),
+                    Type = reader.GetString(3),
+                    Image = reader.IsDBNull(4) ? null : (byte[])reader.GetValue(4)  // Handle null image
+                });
+            }
+            connection.Close();
         }
 
         private void Product_Click(object sender, EventArgs e)
@@ -94,6 +158,8 @@ namespace Pos
             textBox_TotalPrice.Text = orderedProductList.TotalPrice + "₮";
         }
 
+
+
         private void textBox_Search_TextChanged(object sender, EventArgs e)
         {
             DrawProduct(menuProducts.getByName(textBox_Search.Text));
@@ -113,6 +179,33 @@ namespace Pos
         {
             Pay payForm = new Pay(this);
             payForm.ShowDialog();
+        }
+
+        private void button_User_Click(object sender, EventArgs e)
+        {
+            if (isCollapsed)
+            {
+                panel_UserMenu.Size = panel_UserMenu.MaximumSize;
+                isCollapsed = false;
+            }
+            else
+            {
+                panel_UserMenu.Size = panel_UserMenu.MinimumSize;
+                isCollapsed = true;
+            }
+        }
+
+        private void button_ShowProductList_Click(object sender, EventArgs e)
+        {
+            productList = new ProductList(this);
+            productList.ProductbindingSource.DataSource = productContext.Products.ToList();
+            productList.productGridView.DataSource = productContext.Products.ToList();
+            productList.Show();
+        }
+
+        private void button_Help_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
