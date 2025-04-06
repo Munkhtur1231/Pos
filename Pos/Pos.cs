@@ -25,7 +25,7 @@ namespace Pos
             InitializeComponent();
             menuProducts = new MenuProducts();
             orderedProductList = new OrderedProductList();
-            
+
 
             connection = new("Data Source=products.db");
 
@@ -97,7 +97,7 @@ namespace Pos
 
             updateMenuProducts();
 
-            
+
 
 
             DrawProduct(menuProducts.products);
@@ -177,6 +177,11 @@ namespace Pos
 
         private void button_Pay_Click(object sender, EventArgs e)
         {
+            if (orderedProductList.TotalPrice == 0)
+            {
+                MessageBox.Show("Танд төлөх бараа байхгүй байна.");
+                return;
+            }
             Pay payForm = new Pay(this);
             payForm.ShowDialog();
         }
@@ -205,7 +210,8 @@ namespace Pos
 
         private void button_Help_Click(object sender, EventArgs e)
         {
-
+            Help help = new Help();
+            help.Show();
         }
     }
 }

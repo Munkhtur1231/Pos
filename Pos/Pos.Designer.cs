@@ -137,7 +137,7 @@
             // 
             label_Date.AutoSize = true;
             label_Date.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label_Date.Location = new Point(12, 47);
+            label_Date.Location = new Point(12, 55);
             label_Date.Name = "label_Date";
             label_Date.Size = new Size(40, 21);
             label_Date.TabIndex = 4;
@@ -149,9 +149,9 @@
             label_SupermarketName.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label_SupermarketName.Location = new Point(12, 17);
             label_SupermarketName.Name = "label_SupermarketName";
-            label_SupermarketName.Size = new Size(198, 30);
+            label_SupermarketName.Size = new Size(262, 30);
             label_SupermarketName.TabIndex = 3;
-            label_SupermarketName.Text = "AZ SUPERMARKET";
+            label_SupermarketName.Text = "WELBEE's SUPERMARKET";
             // 
             // flowLayoutPanel1
             // 
