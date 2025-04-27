@@ -14,6 +14,12 @@
     <None Remove="users.db" />
   </ItemGroup>
 
+	<ItemGroup>
+		<None Update="logo.png">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+	
   <ItemGroup>
     <Content Include="products.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

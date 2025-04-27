@@ -58,6 +58,7 @@ namespace Pos
                 };
                 owner.button_User.Text = owner.user.Username;
                 connection.Close();
+                owner.Show();
                 Close();
             }
             else

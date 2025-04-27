@@ -208,3 +208,4 @@ C:\Users\Tuvshuu\source\repos\Pos\bin\Debug\net8.0-windows\users.db
 C:\Users\Tuvshuu\source\repos\Pos\obj\Debug\net8.0-windows\Pos.Receipt.resources
 C:\Users\Tuvshuu\source\repos\Pos\obj\Debug\net8.0-windows\Pos.ReceiptProduct.resources
 C:\Users\Tuvshuu\source\repos\Pos\obj\Debug\net8.0-windows\Pos.Help.resources
+C:\Users\Tuvshuu\source\repos\Pos\bin\Debug\net8.0-windows\logo.png

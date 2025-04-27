@@ -40,6 +40,7 @@
             button_ClearTypeSearch = new Button();
             flowLayoutPanel3 = new FlowLayoutPanel();
             panel_UserMenu = new Panel();
+            button_Logout = new Button();
             button_Help = new Button();
             button_ShowProductList = new Button();
             button_User = new Button();
@@ -185,15 +186,26 @@
             // 
             panel_UserMenu.AllowDrop = true;
             panel_UserMenu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            panel_UserMenu.Controls.Add(button_Logout);
             panel_UserMenu.Controls.Add(button_Help);
             panel_UserMenu.Controls.Add(button_ShowProductList);
             panel_UserMenu.Controls.Add(button_User);
             panel_UserMenu.Location = new Point(563, 3);
-            panel_UserMenu.MaximumSize = new Size(93, 110);
+            panel_UserMenu.MaximumSize = new Size(93, 143);
             panel_UserMenu.MinimumSize = new Size(93, 36);
             panel_UserMenu.Name = "panel_UserMenu";
             panel_UserMenu.Size = new Size(93, 36);
             panel_UserMenu.TabIndex = 8;
+            // 
+            // button_Logout
+            // 
+            button_Logout.Location = new Point(0, 109);
+            button_Logout.Name = "button_Logout";
+            button_Logout.Size = new Size(93, 34);
+            button_Logout.TabIndex = 3;
+            button_Logout.Text = "Logout";
+            button_Logout.UseVisualStyleBackColor = true;
+            button_Logout.Click += button_Logout_Click;
             // 
             // button_Help
             // 
@@ -292,5 +304,6 @@
         private Button button_ShowProductList;
         public Button button_User;
         private FlowLayoutPanel flowLayoutPanel3;
+        private Button button_Logout;
     }
 }

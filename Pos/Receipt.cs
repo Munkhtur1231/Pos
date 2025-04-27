@@ -32,6 +32,9 @@ namespace Pos
 
         private void button_Print_Click(object sender, EventArgs e)
         {
+            var printer = new Print();
+            printer.PrintReceipt(orderedProductList);
+
             orderedProductList.clear();
             Close();
         }

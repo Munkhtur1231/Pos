@@ -105,6 +105,7 @@
             // button_Print
             // 
             button_Print.BackColor = Color.SteelBlue;
+            button_Print.Cursor = Cursors.Hand;
             button_Print.Font = new Font("Segoe UI", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button_Print.Location = new Point(99, 531);
             button_Print.Name = "button_Print";

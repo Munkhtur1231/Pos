@@ -27,9 +27,11 @@ namespace PosLibrary
             OrderedProducts = new List<OrderedProduct>();
         }
 
-        public void addOrderedProduct(OrderedProduct product)
+        public OrderedProduct addOrderedProduct(double id, string name, int qty, double price)
         {
-            OrderedProducts.Add(product);
+            OrderedProduct orderedProduct = new OrderedProduct(id, name, qty, price);
+            OrderedProducts.Add(orderedProduct);
+            return orderedProduct;
         }
         public void removeOrderedProduct(OrderedProduct product)
         {

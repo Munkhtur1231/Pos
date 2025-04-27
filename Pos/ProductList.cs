@@ -47,6 +47,16 @@ namespace Pos
             updateProduct.Parameters.Add("@type", SqliteType.Text);
             updateProduct.Parameters.Add("@image", SqliteType.Blob);
 
+            if (!isManager())
+            {
+                textBox_Name.Hide();
+                textBox_Price.Hide();
+                comboBox_Type.Hide();
+                button_AddProduct.Hide();
+                button_Delete.Hide();
+                button_Update.Hide();
+                button_UploadImage.Hide();
+            }
         }
 
         private void button_AddProduct_Click(object sender, EventArgs e)

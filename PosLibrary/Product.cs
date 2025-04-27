@@ -15,5 +15,7 @@ namespace PosLibrary
 
         public string Type { get; set; }
         public byte[]? Image { get; set; }
+
+        //public int BarCode { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace Pos
         public List<string> productTypes;
         public OrderedProductList orderedProductList;
         public ProductList productList;  // List harah form
-        public User user;
+        public User? user;
         bool isCollapsed = true; // User menu
 
         SqliteConnection connection;
@@ -151,9 +151,8 @@ namespace Pos
             }
 
             // Nemegdeegui bol shineer uusgej hiine
-            orderedProduct = new OrderedProduct(id, ((Product)btn.Tag).Name, 1, ((Product)btn.Tag).Price);
-            OrderItem orderItem = new OrderItem(orderedProduct, this);
-            orderedProductList.addOrderedProduct(orderedProduct);
+            orderedProduct = orderedProductList.addOrderedProduct(id, ((Product)btn.Tag).Name, 1, ((Product)btn.Tag).Price);
+            OrderItem orderItem = new OrderItem(orderedProduct, this);  // control
             flowLayoutPanel1.Controls.Add(orderItem);
             textBox_TotalPrice.Text = orderedProductList.TotalPrice + "₮";
         }
@@ -212,6 +211,19 @@ namespace Pos
         {
             Help help = new Help();
             help.Show();
+        }
+
+        private void button_Logout_Click(object sender, EventArgs e)
+        {
+            user = null;
+            if (!isCollapsed)
+            {
+                panel_UserMenu.Size = panel_UserMenu.MinimumSize;
+                isCollapsed = true;
+            }
+            this.Hide();
+            Login loginForm = new Login(this);
+            loginForm.ShowDialog();
         }
     }
 }
