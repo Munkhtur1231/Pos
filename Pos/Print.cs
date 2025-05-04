@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -31,52 +31,69 @@ namespace Pos;
     private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
     {
         Graphics graphics = e.Graphics;
-        Font font = new Font("Arial", 12);
+        Font font = new Font("Arial", 8); 
         float lineHeight = font.GetHeight();
-        float x = 50; // Left margin
-        float y = 50; // Top margin
+        float x = 10; 
+        float y = 10; 
+        float maxWidth = 200; 
 
-        // Load and draw the logo
+
         try
         {
             Image logo = Image.FromFile("logo.png");
-            graphics.DrawImage(logo, x, y, 150, 100); // Draw logo at the top-left corner
-            y += 100; // Adjust y position to leave space for the logo
+
+            
+            float logoWidth = logo.Width * 60 / logo.Height; 
+            float centerX = (maxWidth - logoWidth) / 2; 
+            graphics.DrawImage(logo, centerX, y, logoWidth, 60); 
+
+            y += 60; 
         }
         catch (Exception ex)
         {
-            // Handle cases where the logo file is missing or cannot be loaded
+
             graphics.DrawString("Logo not found", font, Brushes.Red, x, y);
             y += lineHeight;
         }
 
-        // Print header
-        //graphics.DrawString("Receipt", new Font("Arial", 16, FontStyle.Bold), Brushes.Black, x, y);
-        y += lineHeight * 2;
 
-        // Print column headers
+        graphics.DrawString("Welbee's Supermarket", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, x, y);
+        y += lineHeight * 2; 
+
+        
+        string todayDate = DateTime.Now.ToString("yyyy-MM-dd");
+        graphics.DrawString("Date: " + todayDate, font, Brushes.Black, x, y);
+        y += lineHeight * 2; 
+
+
+        
         graphics.DrawString("ID", font, Brushes.Black, x, y);
-        graphics.DrawString("Product", font, Brushes.Black, x + 100, y);
-        graphics.DrawString("Qty", font, Brushes.Black, x + 300, y);
-        graphics.DrawString("Price", font, Brushes.Black, x + 350, y);
-        graphics.DrawString("Total", font, Brushes.Black, x + 450, y);
+        graphics.DrawString("Product", font, Brushes.Black, x + 40, y);
+        graphics.DrawString("Qty", font, Brushes.Black, x + 120, y); 
+        graphics.DrawString("Price", font, Brushes.Black, x + 160, y);
         y += lineHeight;
 
-        // Print each order
+        
         foreach (var order in orderedProductList.OrderedProducts)
         {
             graphics.DrawString(order.Id.ToString(), font, Brushes.Black, x, y);
-            graphics.DrawString(order.Name, font, Brushes.Black, x + 100, y);
-            graphics.DrawString(order.Quantity.ToString(), font, Brushes.Black, x + 300, y);
-            graphics.DrawString(order.Price.ToString() + "₮", font, Brushes.Black, x + 350, y);
-            graphics.DrawString(order.TotalPrice.ToString() + "₮", font, Brushes.Black, x + 450, y);
+            graphics.DrawString(order.Name, font, Brushes.Black, x + 40, y);
+            graphics.DrawString(order.Quantity.ToString(), font, Brushes.Black, x + 120, y);
+            graphics.DrawString(order.Price.ToString() + "₮", font, Brushes.Black, x + 160, y);
             y += lineHeight;
+            if (y > 380) 
+            {
+                e.HasMorePages = true; 
+                return;
+            }
         }
 
-        // Print footer
-        y += lineHeight;
+        
         double grandTotal = orderedProductList.OrderedProducts.Sum(o => o.TotalPrice);
-        graphics.DrawString("Total Price: " + grandTotal + "₮", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, x, y);
+        y += lineHeight;
+        graphics.DrawString("Total: " + grandTotal + "₮", new Font("Arial", 10, FontStyle.Bold), Brushes.Black, x, y);
     }
+
+
 }
 
