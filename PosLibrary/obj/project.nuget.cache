@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jS45k9gjU1U=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Tuvshuu\\Downloads\\Pos-main\\Pos-main\\PosLibrary\\PosLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Tuvshuu\\.nuget\\packages\\coverlet.collector\\6.0.4\\coverlet.collector.6.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

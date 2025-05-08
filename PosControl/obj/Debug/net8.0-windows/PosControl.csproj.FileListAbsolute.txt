@@ -1,0 +1,17 @@
+C:\Users\Tuvshuu\source\repos\PosControl\bin\Debug\net8.0-windows\PosControl.deps.json
+C:\Users\Tuvshuu\source\repos\PosControl\bin\Debug\net8.0-windows\PosControl.dll
+C:\Users\Tuvshuu\source\repos\PosControl\bin\Debug\net8.0-windows\PosControl.pdb
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.csproj.GenerateResource.cache
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.AssemblyInfoInputs.cache
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.AssemblyInfo.cs
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.csproj.CoreCompileInputs.cache
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.dll
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\refint\PosControl.dll
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.pdb
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\ref\PosControl.dll
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.TotalPrice.resources
+C:\Users\Tuvshuu\source\repos\PosControl\bin\Debug\net8.0-windows\Pos.dll
+C:\Users\Tuvshuu\source\repos\PosControl\bin\Debug\net8.0-windows\Pos.pdb
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.csproj.AssemblyReference.cache
+C:\Users\Tuvshuu\source\repos\PosControl\obj\Debug\net8.0-windows\PosControl.csproj.Up2Date
